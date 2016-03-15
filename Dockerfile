@@ -8,6 +8,29 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install vim postfix sasl2-bin cour
     courier-pop courier-pop-ssl courier-authdaemon supervisor gamin amavisd-new spamassassin clamav clamav-daemon libnet-dns-perl libmail-spf-perl \
     pyzor razor arj bzip2 cabextract cpio file gzip nomarch p7zip pax unzip zip zoo rsyslog mailutils netcat \
     opendkim opendkim-tools opendmarc curl fail2ban
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install make libyaml-dev git \
+libauthen-ntlm-perl \
+libcrypt-ssleay-perl \
+libdigest-hmac-perl \
+libfile-copy-recursive-perl \
+libio-compress-perl \
+libio-socket-inet6-perl \
+libio-socket-ssl-perl \
+libio-tee-perl \
+libmodule-scandeps-perl \
+libnet-ssleay-perl      \
+libpar-packer-perl \
+libterm-readkey-perl \
+libtest-pod-perl \
+libtest-simple-perl     \
+libunicode-string-perl \
+liburi-perl \
+cpanminus
+
+RUN cpanm Data::Uniqid Mail::IMAPClient
+RUN cd /opt && git clone https://github.com/imapsync/imapsync
+
 RUN apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
 # Configures Saslauthd

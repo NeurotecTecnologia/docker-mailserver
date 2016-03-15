@@ -60,6 +60,11 @@ Example:
     user1@domain.tld|mypassword
     user2@otherdomain.tld|myotherpassword
 
+### Sync Remote
+
+Example:
+	user@domain.ltd|mypassword|remoteuser@remotedomain.ltd|remotepassword|remotehost
+
 ### Aliases
 
 Please first read [Postfix documentation on virtual aliases](http://www.postfix.org/VIRTUAL_README.html#virtual_alias).

@@ -1,4 +1,4 @@
-NAME = tvial/docker-mailserver
+NAME = neurotec/docker-mailserver-gmail-relay
 
 all: build run fixtures tests clean
 all-no-build: run fixtures tests clean

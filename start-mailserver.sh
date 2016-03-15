@@ -41,6 +41,18 @@ else
   echo "==> Warning: '/tmp/postfix/accounts.cf' is not provided. No mail account created."
 fi
 
+
+if [ -f /tmp/imapsync/accounts ]; then
+        echo "Sync accounts"
+        while IFS=$'|' read login pass loginremote remotepass host2
+        do
+                host1="localhost"
+                echo "10 * * * * /opt/imapsync/imapsync --host1 ${host2} --user1 ${loginremote} --password1 ${remotepass} --authmech1 PLAIN --ssl1 --host2 ${host1} --user2 ${login} --password2 ${pass} --pidfile /var/run/${login}.pid" >> /etc/crontab
+        done < /tmp/imapsync/accounts
+else
+        echo "==> warning: '/tmp/imapsync/accounts' is not provide"
+fi
+
 if [ -f /tmp/postfix/virtual ]; then
   # Copying virtual file
   cp /tmp/postfix/virtual /etc/postfix/virtual
