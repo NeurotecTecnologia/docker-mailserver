@@ -47,7 +47,7 @@ if [ -f /tmp/imapsync/accounts ]; then
         while IFS=$'|' read login pass loginremote remotepass host2
         do
                 host1="localhost"
-                echo "10 * * * * /opt/imapsync/imapsync --host1 ${host2} --user1 ${loginremote} --password1 ${remotepass} --authmech1 PLAIN --ssl1 --host2 ${host1} --user2 ${login} --password2 ${pass} --pidfile /var/run/${login}.pid" >> /etc/crontab
+                echo "3 * * * * /opt/imapsync/imapsync --host1 ${host2} --user1 ${loginremote} --password1 ${remotepass} --authmech1 PLAIN --ssl1 --host2 ${host1} --user2 ${login} --password2 ${pass} --pidfile /var/run/${login}.pid" >> /etc/crontab
         done < /tmp/imapsync/accounts
 else
         echo "==> warning: '/tmp/imapsync/accounts' is not provide"
